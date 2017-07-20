@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>无标题页</title>
+    <script language="javascript">
+
+  function mousePosition(ev){
+     if(ev.pageX || ev.pageY){
+      return {x:ev.pageX, y:ev.pageY};
+      }
+      return {
+       x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+       y:ev.clientY + document.body.scrollTop  - document.body.clientTop
+       };
+ }
+
+function mouseMove(ev){
+    ev = ev || window.event;
+    var mousePos = mousePosition(ev);
+    document.getElementById('xxx').value = mousePos.x;
+   document.getElementById('yyy').value = mousePos.y;
+}
+
+
+document.onmousemove = mouseMove;
+
+  
+  function Show(el){
+      var x = parseInt(document.getElementById('xxx').value)-el.offsetLeft;
+      var y = parseInt(document.getElementById('yyy').value)-el.offsetTop;
+      x = "X:"+x;
+      y = "Y:"+y;
+      alert(x+","+y); 
+  }
+  
+</script>
+
+</head>
+<body>
+    X:<input id="xxx" type="text" />  Y:<input id="yyy" type="text" />
+    <img id="imgPic" src="upload/1482284213970.jpg" style="margin-left:100 ;" onclick="Show(this)" />
+</body>
+</html>
